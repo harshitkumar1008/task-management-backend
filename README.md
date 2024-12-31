@@ -1,4 +1,5 @@
-This project serves as a backend service to the Task Management Application through Restful Apis.
+This project is a backend service to the Task Management Application through Restful Apis.
+
 Core Entities and APIs
  - User Management
  - Implemented the User entity and related APIs.
