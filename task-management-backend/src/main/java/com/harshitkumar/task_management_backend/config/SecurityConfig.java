@@ -15,14 +15,13 @@ public class SecurityConfig {
     @Autowired
     private JWTAuthenticationFilter jwtAuthenticationFilter;
 
-    public SecurityConfig() {
-    }
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable).authorizeHttpRequests((request) -> {
-            (request.requestMatchers(new String[]{"/api/auth/**", "/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**"}))
-                    .permitAll()
+            (request
+                    .requestMatchers("/api/auth/**", "/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**")).permitAll()
+                    .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                    .requestMatchers("/api/user/**").hasAnyRole("USER", "ADMIN")
                     .anyRequest()
                     .authenticated();
         }).sessionManagement((session) -> {
