@@ -59,7 +59,7 @@ Security Configuration
 Next Steps:
   - Exception Handling:
       - Add custom error handling and consistent API responses.
-  - Notification System:
+  - Notification System: [WIP]
       - Implement reminders and notifications for task deadlines or updates.
   - Testing:
       - Write comprehensive unit, integration, and end-to-end tests.
