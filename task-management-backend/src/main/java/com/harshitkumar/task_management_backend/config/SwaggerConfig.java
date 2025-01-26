@@ -11,8 +11,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class SwaggerConfig {
-    public SwaggerConfig() {
-    }
 
     @Bean
     public OpenAPI customOpenAPI() {

@@ -4,6 +4,7 @@ import com.harshitkumar.task_management_backend.dto.*;
 import com.harshitkumar.task_management_backend.entity.*;
 import com.harshitkumar.task_management_backend.repository.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ public class TaskService {
     private TaskRepository taskRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private NotificationService notificationService;
 
     public Task createTask(TaskRequest taskRequest) {
         Optional<User> userOptional = userRepository.findById(Long.parseLong(taskRequest.getId()));
@@ -23,7 +26,11 @@ public class TaskService {
         } else {
             User user = userOptional.get();
             Task task = Task.builder().title(taskRequest.getTitle()).description(taskRequest.getDescription()).status(taskRequest.getStatus()).priority(taskRequest.getPriority()).dueDate(taskRequest.getDueDate()).user(user).build();
-            return this.taskRepository.save(task);
+            task = taskRepository.save(task);
+            Notification notification = new Notification();
+            notification.setTask(task);
+            notificationService.endTimeNotificationScheduler(task, notification);
+            return task;
         }
     }
 
@@ -43,7 +50,7 @@ public class TaskService {
         return this.taskRepository.findTaskByPriorityAndUserId(priority, id);
     }
 
-    public List<Task> fetchTaskByDueDateAndUserId(LocalDate dueDate, long id) {
+    public List<Task> fetchTaskByDueDateAndUserId(LocalDateTime dueDate, long id) {
         return this.taskRepository.findTaskByDueDateAndUserId(dueDate, id);
     }
 

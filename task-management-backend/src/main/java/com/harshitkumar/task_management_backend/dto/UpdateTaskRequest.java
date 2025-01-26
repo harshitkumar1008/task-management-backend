@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -13,7 +14,7 @@ public class UpdateTaskRequest {
     private String description;
     private Status status;
     private Priority priority;
-    private LocalDate dueDate;
+    private LocalDateTime dueDate;
     private String userId;
 
 

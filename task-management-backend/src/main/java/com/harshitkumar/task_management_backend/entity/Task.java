@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "Tasks")
@@ -36,7 +37,7 @@ public class Task {
     private Priority priority = Priority.MINOR;
 
     @Column(name = "dueDate")
-    private LocalDate dueDate;
+    private LocalDateTime dueDate;
 
     @Column(nullable = false, updatable = false)
     private LocalDate createdAt;

@@ -2,26 +2,26 @@ This project is a backend service to the Task Management Application through Res
 
 Core Entities and APIs
  - User Management
- - Implemented the User entity and related APIs.
- - Features: Create, fetch, update, and delete users.
- - Added role-based user management for the ADMIN role.
+   - Implemented the User entity and related APIs.
+   - Features: Create, fetch, update, and delete users.
+   - Added role-based user management for the ADMIN role.
 
-Task Management
-- Implemented the Task entity and related APIs.  
-- Features: Create, fetch, update, and delete tasks for regular users.
-- Implemented admin-level task management:
-    - View all tasks in the system.
-    - Assign tasks to specific users.
-    - Delete tasks.
+ - Task Management
+   - Implemented the Task entity and related APIs.  
+   - Features: Create, fetch, update, and delete tasks for regular users.
+   - Implemented admin-level task management:
+       - View all tasks in the system.
+       - Assign tasks to specific users.
+       - Delete tasks.
 
 Security
   - Authentication and Authorization
   - Integrated JWT-based authentication:
-  - Tokens include user-specific details such as username and role.
+    - Tokens include user-specific details such as username and role.
   - Added refresh token functionality:
   - Securely renew expired access tokens using refresh tokens.
   - Implemented token expiration handling:
-  - Automatically handle expired JWTs.
+    - Automatically handle expired JWTs.
   - Return meaningful responses for expired or invalid tokens.
   - Role-Based Access Control (RBAC)
   - Defined roles such as ADMIN, USER, and optionally MANAGER.

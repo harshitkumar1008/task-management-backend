@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -23,7 +24,7 @@ public class TaskRequest {
     private Priority priority;
 
     @NotBlank(message = "Due date is required")
-    private LocalDate dueDate;
+    private LocalDateTime dueDate;
 
     @NotBlank(message = "User id is required")
     private String id;

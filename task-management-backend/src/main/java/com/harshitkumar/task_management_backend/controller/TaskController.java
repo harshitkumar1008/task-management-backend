@@ -5,6 +5,7 @@ import com.harshitkumar.task_management_backend.entity.*;
 import com.harshitkumar.task_management_backend.service.*;
 import jakarta.validation.Valid;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -50,7 +51,7 @@ public class TaskController {
     }
 
     @GetMapping({"/userId/{userId}/dueDate/{dueDate}"})
-    public ResponseEntity<List<Task>> getTaskByUserId(@PathVariable LocalDate dueDate, @PathVariable String userId) {
+    public ResponseEntity<List<Task>> getTaskByUserId(@PathVariable LocalDateTime dueDate, @PathVariable String userId) {
         return ResponseEntity.ok(this.taskService.fetchTaskByDueDateAndUserId(dueDate, Long.parseLong(userId)));
     }
 

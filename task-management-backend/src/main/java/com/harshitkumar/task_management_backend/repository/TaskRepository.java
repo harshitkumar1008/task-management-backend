@@ -2,6 +2,7 @@ package com.harshitkumar.task_management_backend.repository;
 
 import com.harshitkumar.task_management_backend.entity.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -16,6 +17,6 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
 
     List<Task> findTaskByPriorityAndUserId(Priority priority, long id);
 
-    List<Task> findTaskByDueDateAndUserId(LocalDate dueDate, long id);
+    List<Task> findTaskByDueDateAndUserId(LocalDateTime dueDate, long id);
 }
 
